@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>To, Mero Budii ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    overflow: hidden;
+}
+
+.page {
+    display: none;
+    height: 100vh;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+.active {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    background: white;
+    padding: 35px;
+    border-radius: 20px;
+    max-width: 400px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+h1 {
+    color: #e91e63;
+}
+
+p {
+    font-size: 18px;
+    color: #444;
+}
+
+button {
+    padding: 12px 22px;
+    margin: 10px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#yesBtn {
+    background: #e91e63;
+    color: white;
+}
+
+#noBtn {
+    background: #555;
+    color: white;
+    position: absolute;
+}
+
+/* Floating hearts */
+.heart {
+    position: fixed;
+    font-size: 22px;
+    animation: floatUp 6s linear infinite;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(100vh); opacity: 1; }
+    100% { transform: translateY(-10vh); opacity: 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div id="page1" class="page active">
+    <div class="card">
+        <h1>To, Mero Budii ❤️</h1>
+        <p>
+            From your bewakuf aadmi... <br>
+            From your nanuu 🥺 <br><br>
+            I know I hurt you. I messed up.  
+            But I love you more than my ego, more than my mistakes.
+        </p>
+        <button id="yesBtn">Forgive Me? 💕</button>
+        <button id="noBtn">No 😤</button>
+    </div>
+</div>
+
+<!-- PAGE 2 -->
+<div id="page2" class="page">
+    <div class="card">
+        <h1>Thank You For Staying ❤️</h1>
+        <p>
+            Even when I act stupid…  
+            Even when I don’t deserve it…  
+            You still choose me.
+        </p>
+        <button onclick="nextPage(3)">Continue ➜</button>
+    </div>
+</div>
+
+<!-- PAGE 3 -->
+<div id="page3" class="page">
+    <div class="card">
+        <h1>What You Mean To Me</h1>
+        <p>
+            You are my peace.  
+            You are my comfort.  
+            You are the reason I smile randomly.  
+            And I never want to be the reason for your tears.
+        </p>
+        <button onclick="nextPage(4)">One Last Thing ➜</button>
+    </div>
+</div>
+
+<!-- PAGE 4 FINAL -->
+<div id="page4" class="page">
+    <div class="card">
+        <h1>I Love You ❤️</h1>
+        <p>
+            Mero budii…  
+            I promise to grow.  
+            I promise to listen more.  
+            I promise to protect your heart like it’s the most precious thing in this world.  
+            <br><br>
+            I may be your bewakuf aadmi.  
+            I may be your nanuu.  
+            But I am yours. Completely.  
+            And I will always choose you.
+        </p>
+        <button onclick="startHearts()">Forever ❤️</button>
+    </div>
+</div>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+
+// Runaway "No" button
+noBtn.addEventListener("mouseover", function() {
+    const x = Math.random() * (window.innerWidth - 100);
+    const y = Math.random() * (window.innerHeight - 50);
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+});
+
+// Forgive button goes to next page
+yesBtn.addEventListener("click", function() {
+    nextPage(2);
+});
+
+function nextPage(num) {
+    document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+    document.getElementById("page" + num).classList.add("active");
+}
+
+// Floating hearts animation
+function startHearts() {
+    setInterval(() => {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerText = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 6000);
+    }, 300);
+}
+</script>
+
+</body>
+</html>
